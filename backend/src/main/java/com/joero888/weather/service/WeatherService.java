@@ -28,8 +28,9 @@ public class WeatherService {
         System.out.println("🌱 Environment API Key: " + env.getProperty("OPENWEATHERMAP_API_KEY"));
     }
 
-    public WeatherResponse getWeather(String city) {
-        String url = apiUrl + "?q=" + city + "&appid=" + apiKey + "&units=metric";
+    public WeatherResponse getWeather(String city, String unit) {
+        String url = apiUrl + "?q=" + city + "&appid=" + apiKey + "&units=" + unit;
+        System.out.println("➡️  Calling API with: " + url);  // logs the API URL being called
         return restTemplate.getForObject(url, WeatherResponse.class);
     }
 }
